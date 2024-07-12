@@ -1,29 +1,17 @@
 
-const choice1 = document.querySelector('#choice1');
-const choice2 = document.querySelector('#choice2');
-const choice3 = document.querySelector('#choice3');
-
-const quiz =document.querySelectorAll('input');
-const feedback =document.querySelector('#feedback');
-const button =document.querySelector('#submit-answer');
-
-let userAnswer = quiz.forEach( answer => {
-    answer.addEventListener('click', () => {
-        return answer.value;
-    });
-});
-
-function checkAnswer(){
+function checkAnswer() {
     const correctAnswer = "4";
+    const userAnswer = document.querySelector('input[name="quiz"]:checked').value;
+    const feedback = document.getElementById("feedback");
+
+    if (userAnswer === correctAnswer) {
+        feedback.textContent = "Correct! Well done.";
+    } else {
+        feedback.textContent = "That's incorrect. Try again!";
+    }
 }
 
-if (userAnswer === correctAnswer()){
-    feedback.textContent = "Correct! Well done.";
-} else {
-    feedback.textContent = "That's incorrect. Try again!";
-}
-
-button.addEventListener('click', checkAnswer);       
+document.getElementById("submit-answer").addEventListener("click", checkAnswer);      
 
 
 
